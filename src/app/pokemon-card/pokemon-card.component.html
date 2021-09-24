@@ -1,18 +1,23 @@
-<div class="pokemon-card">
-    <div class="pokemon-card__image">
-        <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png" alt="Pokemon Image">
-    </div>
+<div class="pokemon-card" *ngIf="pokemon">
+  <div class="pokemon-card__image">
+    <img
+      [src]="getPokemonImage(pokemon)"
+      alt="Pokemon Image">
+  </div>
 
-    <div class="pokemon-card__number">
-        N°001
-    </div>
+  <div class="pokemon-card__number">
+    Nº {{ getPokemonNumber(pokemon) }}
+  </div>
 
-    <div class="pokemon-card__name">
-        Bulbasaur
-    </div>
+  <div class="pokemon-card__name">
+    {{ pokemon.name }}
+  </div>
 
-    <div class="pokemon-card__types">
-        <div class="pokemon-card__type pokemon-card__type--grass">Grass</div>
-        <div class="pokemon-card__type pokemon-card__type--poison">Poison</div>
+  <div class="pokemon-card__types">
+    <div class="pokemon-card__type"
+         *ngFor="let type of pokemon.types"
+         [class]="'pokemon-card__type--' + type.toLowerCase()">
+      {{ type }}
     </div>
+  </div>
 </div>
